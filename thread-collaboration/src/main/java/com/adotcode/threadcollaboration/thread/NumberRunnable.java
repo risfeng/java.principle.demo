@@ -8,7 +8,7 @@ package com.adotcode.threadcollaboration.thread;
  */
 public class NumberRunnable implements Runnable {
 
-  private Object lockObject = null;
+  private final Object lockObject;
 
   public NumberRunnable(Object lockObject) {
     this.lockObject = lockObject;
@@ -37,7 +37,7 @@ public class NumberRunnable implements Runnable {
             e.printStackTrace();
           }
         }
-        System.out.println(i);
+        System.out.println(Thread.currentThread().getName() + ": " + i);
       }
     }
   }

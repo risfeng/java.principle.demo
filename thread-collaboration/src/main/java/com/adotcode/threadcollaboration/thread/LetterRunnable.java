@@ -8,7 +8,7 @@ package com.adotcode.threadcollaboration.thread;
  */
 public class LetterRunnable implements Runnable {
 
-  private Object lockObject = null;
+  private final Object lockObject;
 
   public LetterRunnable(Object lockObject) {
     this.lockObject = lockObject;
@@ -29,7 +29,7 @@ public class LetterRunnable implements Runnable {
     char maxValue = 'Z';
     for (char i = 'A'; i <= maxValue; i++) {
       synchronized (lockObject) {
-        System.out.println(i);
+        System.out.println(Thread.currentThread().getName() + ": " + i);
         lockObject.notifyAll();
         try {
           lockObject.wait();
